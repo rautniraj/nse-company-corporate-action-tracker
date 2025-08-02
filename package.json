@@ -1,0 +1,21 @@
+{
+  "name": "nse-rss-puppeteer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "fast-xml-parser": "^5.2.5",
+    "node-fetch": "^2.7.0",
+    "ntfy": "^1.7.6",
+    "puppeteer": "^24.15.0",
+    "string-similarity": "^4.0.4",
+    "xlsx": "^0.18.5"
+  }
+}
