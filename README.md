@@ -107,13 +107,33 @@ node index.js
 On success, you'll get logs like:
 
 ```
-📥 Fetching NSE RSS feed...
-🧹 Parsing feed...
-📂 Loading invested companies list...
-🔍 Filtering relevant actions...
-✅ Match Found → HDFC Bank Limited → HDFC Bank Ltd - Ex-Date: 05-Aug-2025
-✅ Match Found → Infosys Ltd → Infosys - Ex-Date: 05-Aug-2025
-📣 Notification sent via ntfy
+[dotenv@17.2.1] injecting env (3) from .env -- tip: ⚙️  load multiple .env files with { path: ['.env.local', '.env'] }
+1.> Fetching NSE RSS feed...
+(node:234482) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+2.> Parsing feed...
+3.> Parsed 83 items
+Showing first 3 for verification
+[
+  {
+    title: 'Tasty Bite Eatables Limited - Ex-Date: 01-Aug-2025',
+    description: 'SERIES:EQ |PURPOSE:DIVIDEND - RS 2 PER SHARE |FACE VALUE:10 |RECORD DATE:01-Aug-2025 |BOOK CLOSURE START DATE:- |BOOK CLOSURE END DATE:-'
+  },
+  {
+    title: 'Tips Music Limited - Ex-Date: 05-Aug-2025',
+    description: 'SERIES:EQ |PURPOSE:INTERIM DIVIDEND - RS 4 PER SHARE |FACE VALUE:1 |RECORD DATE:05-Aug-2025 |BOOK CLOSURE START DATE:- |BOOK CLOSURE END DATE:-'
+  },
+  {
+    title: 'Tamilnad Mercantile Bank Limited - Ex-Date: 01-Aug-2025',
+    description: 'SERIES:EQ |PURPOSE:DIVIDEND - RS 11 PER SHARE |FACE VALUE:10 |RECORD DATE:01-Aug-2025 |BOOK CLOSURE START DATE:- |BOOK CLOSURE END DATE:-'
+  },
+]
+4.> Loading invested companies list...
+5.> Filtering relevant actions...
+Match Found → hdfc bank limited → HDFC Bank Limited - Ex-Date: 26-Aug-2025
+Match Found → karur vysya bank limited → Karur Vysya Bank Limited - Ex-Date: 26-Aug-2025
+Notification sent
+6.> Done checking corporate actions.
 ```
 
 And you'll receive a single push notification with all matches for the day.
@@ -123,13 +143,13 @@ And you'll receive a single push notification with all matches for the day.
 ## 🔍 Example Notification
 
 ```
-📢 2 Corporate Actions Matched
+2 Corporate Actions Matched
 
-🔸 Infosys Ltd - Ex-Date: 05-Aug-2025
-SERIES:EQ | PURPOSE: BONUS 1:1 | RECORD DATE: 05-Aug-2025
+🔸 HDFC Bank Limited - Ex-Date: 26-Aug-2025
+SERIES:EQ |PURPOSE:BONUS 1:1 |FACE VALUE:100000 |RECORD DATE:27-Aug-2025 |BOOK CLOSURE START DATE:- |BOOK CLOSURE END DATE:-
 
-🔸 HDFC Bank Ltd - Ex-Date: 06-Aug-2025
-SERIES:EQ | PURPOSE: SPLIT 10 TO 5 | RECORD DATE: 06-Aug-2025
+🔸 Karur Vysya Bank Limited - Ex-Date: 26-Aug-2025
+SERIES:EQ |PURPOSE:BONUS 1:5 |FACE VALUE:10 |RECORD DATE:26-Aug-2025 |BOOK CLOSURE START DATE:- |BOOK CLOSURE END DATE:-
 ```
 
 ---
