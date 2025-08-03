@@ -6,9 +6,10 @@ const sendNtfyNotification = require('./ntfy');
 const stringSimilarity = require('string-similarity');
 require('dotenv').config();
 
-const KEYWORDS     = process.env.KEYWORDS.split(',');
-const NTFY_TOPIC   = process.env.NTFY_TOPIC;
+const KEYWORDS = process.env.KEYWORDS.split(',');
+const NTFY_TOPIC = process.env.NTFY_TOPIC;
 const MATCH_PERCENT = Number(process.env.MATCH_PERCENT);
+const DAILY_LOG_CHANNEL = process.env.NTFY_DAILY_LOG_CHANNEL;
 
 (async () => {
     try {
@@ -21,6 +22,10 @@ const MATCH_PERCENT = Number(process.env.MATCH_PERCENT);
         console.log(`3.> Parsed ${items.length} items`);
         console.log("Showing first 3 for verification ...")
         console.log(items.slice(0, 3));
+
+        if (DAILY_LOG_CHANNEL) {
+            await sendNtfyNotification(DAILY_LOG_CHANNEL, "Success", `Fetched ${items.length} records from NSE`);
+        }
 
         console.log("4.> Loading invested companies list...");
         const companyList = getCompanyList();
