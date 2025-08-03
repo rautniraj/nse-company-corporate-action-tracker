@@ -12,9 +12,9 @@
   "dependencies": {
     "dotenv": "^17.2.1",
     "fast-xml-parser": "^5.2.5",
+    "got": "^11.8.6",
     "node-fetch": "^2.7.0",
     "ntfy": "^1.7.6",
-    "puppeteer": "^24.15.0",
     "string-similarity": "^4.0.4",
     "xlsx": "^0.18.5"
   }
