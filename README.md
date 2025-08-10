@@ -2,13 +2,13 @@
 
 This project monitors the **Corporate Action RSS Feed** from the [NSE (National Stock Exchange of India)](https://www.nseindia.com/), detects announcements like **BONUS**, **SPLIT**, or **DIVIDEND**, matches them against your personal list of invested companies, and sends you **real-time push notifications** via [ntfy.sh](https://ntfy.sh).
 
-> Built using Node.js, Puppeteer, and fuzzy string matching. Developed end-to-end by Niraj Raut.
+> Built using Node.js, Got, and fuzzy string matching. Developed end-to-end by Niraj Raut.
 
 ---
 
 ## 🚀 Features
 
-- ✅ Fetches the **latest RSS feed** directly using Puppeteer (bypasses stale cached data)
+- ✅ Fetches the **latest RSS feed** 
 - 🧠 Parses XML into structured data
 - 🔍 Filters announcements using **keywords** (like `BONUS`, `SPLIT`, etc.)
 - 🏦 Matches announcement titles against your invested company list from Excel
@@ -23,7 +23,7 @@ This project monitors the **Corporate Action RSS Feed** from the [NSE (National 
 
 | Module              | Purpose |
 |---------------------|---------|
-| **puppeteer**       | Fetches live XML from NSE with proper headers (bypassing CDN cache) |
+| **got**   | Fetches live XML from NSE with proper headers (bypassing CDN cache) |
 | **xlsx**            | Parses `.xlsx` Excel files to load your list of invested companies |
 | **string-similarity** | Performs fuzzy matching of company names |
 | **axios**           | Sends HTTP POST requests to `ntfy.sh` |
@@ -32,23 +32,15 @@ This project monitors the **Corporate Action RSS Feed** from the [NSE (National 
 Install them using:
 
 ```bash
-npm install puppeteer xlsx string-similarity axios dotenv
+npm install got xlsx string-similarity axios dotenv
 ```
-
 ---
 
 ## 🔧 Requirements
 
 - Node.js v16 or above
-- A Linux/macOS/WSL environment (for Puppeteer dependencies)
 - Internet connection (to fetch data and send notifications)
 - An ntfy.sh topic (free and anonymous)
-
-**System Dependencies (for Puppeteer):**
-
-```bash
-sudo apt install -y libx11-dev libxkbcommon-x11-0 libatk-bridge2.0-0 libgtk-3-0 libnss3 libxss1 libasound2
-```
 
 ---
 
@@ -156,7 +148,7 @@ SERIES:EQ |PURPOSE:BONUS 1:5 |FACE VALUE:10 |RECORD DATE:26-Aug-2025 |BOOK CLOSU
 
 ## 🧠 How It Works (Detailed Flow)
 
-- `fetch-nse-rss.js` uses Puppeteer to load the XML feed from:
+- `fetch-nse-rss.js` uses got to load the XML feed from:
   ```
   https://nsearchives.nseindia.com/content/RSS/Corporate_action.xml
   ```
@@ -173,7 +165,7 @@ SERIES:EQ |PURPOSE:BONUS 1:5 |FACE VALUE:10 |RECORD DATE:26-Aug-2025 |BOOK CLOSU
 
 ```
 .
-├── index.js                   # Main entry point
+├── index.js                  # Main entry point
 ├── fetch-nse-rss.js          # Fetches XML from NSE
 ├── parse-nse-rss.js          # Parses the XML feed
 ├── extract-company-list.js   # Reads company names from Excel
